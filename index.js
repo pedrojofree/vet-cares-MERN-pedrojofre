@@ -14,7 +14,7 @@ dotenv.config() //Reconociendo variables de entorno
 
 conectarDB()
 
-const dominiosPermitidos = [process.env.FRONTEND_URL1, process.env.FRONTEND_URL2];
+const dominiosPermitidos = [process.env.FRONTEND_URL];
 const corsOptions = {
     origin: function(origin, callback){
         if(dominiosPermitidos.indexOf(origin) !== -1){
