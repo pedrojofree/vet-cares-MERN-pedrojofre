@@ -14,10 +14,10 @@ dotenv.config() //Reconociendo variables de entorno
 
 conectarDB()
 
-const dominiosPermitidos = [process.env.FRONTEND_URL];
+const dominiosPermitidos = [process.env.FRONTEND_URL, process.env.FRONTEND_URL1];
 const corsOptions = {
     origin: function(origin, callback){
-        if(dominiosPermitidos.indexOf(origin) !== -1){
+        if(dominiosPermitidos.indexOf(origin) !== -1 || !origin){
             //El origen existe y esta permitido
             callback(null, true);
         } else {
@@ -31,8 +31,6 @@ app.use(cors(corsOptions));
 app.use("/api/veterinarios", veterinarioRoutes)
 app.use("/api/pacientes", pacientesRoutes)
 
-
-// Hola
 const port = process.env.PORT || 4000
 app.listen(port, () => {
     console.log(`Server connected on port ${port}`);
